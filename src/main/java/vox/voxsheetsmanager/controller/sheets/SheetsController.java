@@ -2,10 +2,10 @@ package vox.voxsheetsmanager.controller.sheets;
 
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import vox.voxsheetsmanager.service.sheets.logger.LoggerConfig;
+
+import java.util.logging.Level;
 
 @RestController
 @RequestMapping("/sheets")
@@ -15,4 +15,10 @@ public class SheetsController {
     public ObjectNode getSheet(@PathVariable String spreadName, @PathVariable String sheetName) {
         return null;
     }
+
+    @PostMapping("/sendSheetData")
+    public void sendSheetDataToCloud(@RequestBody Object object){
+        LoggerConfig.getLogger().log(Level.INFO, object.toString());
+    }
+
 }
