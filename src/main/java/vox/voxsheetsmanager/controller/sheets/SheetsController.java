@@ -1,6 +1,7 @@
 package vox.voxsheetsmanager.controller.sheets;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.web.bind.annotation.*;
 import vox.voxsheetsmanager.service.sheets.logger.LoggerConfig;
@@ -17,7 +18,8 @@ public class SheetsController {
     }
 
     @PostMapping("/sendSheetData")
-    public void sendSheetDataToCloud(@RequestBody Object object){
+    public void sendSheetDataToCloud(@RequestBody JsonNode object){
+        System.out.println(object);
         LoggerConfig.getLogger().log(Level.INFO, object.toString());
     }
 
