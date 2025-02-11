@@ -15,9 +15,9 @@ import java.util.List;
 public class SheetsController {
     @Autowired
     private SheetsManagerPort sheetsManagerPort;
-    @GetMapping("/getSheet/{spreadName}/{sheetName}")
-    public ObjectNode getSheet(@PathVariable String spreadName, @PathVariable String sheetName) {
-        return null;
+    @GetMapping("/getSheet/{sheetName}/{spreadName}")
+    public Sheets getSheet(@PathVariable String sheetName, @PathVariable String spreadName) {
+        return sheetsManagerPort.getSheet(sheetName,spreadName);
     }
 
     @PostMapping("/sendSheetData")
