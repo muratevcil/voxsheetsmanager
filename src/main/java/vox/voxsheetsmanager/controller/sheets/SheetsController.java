@@ -8,6 +8,7 @@ import vox.voxsheetsmanager.data.mongo.Sheets;
 import vox.voxsheetsmanager.data.sheets.requests.UpdateSheetDataRequest;
 import vox.voxsheetsmanager.service.sheets.ports.SheetsManagerPort;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,8 +17,10 @@ public class SheetsController {
     @Autowired
     private SheetsManagerPort sheetsManagerPort;
     @GetMapping("/getSheet/{sheetName}/{spreadName}")
-    public Object getSheet(@PathVariable String sheetName, @PathVariable String spreadName) {
-        return sheetsManagerPort.getSheet(sheetName,spreadName);
+    public List<Object> getSheet(@PathVariable String sheetName, @PathVariable String spreadName) {
+        List<Object> returningObject = new ArrayList<>();
+        returningObject.add(sheetsManagerPort.getSheet(sheetName,spreadName));
+        return returningObject;
     }
 
     @PostMapping("/sendSheetData")
