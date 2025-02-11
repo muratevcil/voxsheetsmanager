@@ -1,26 +1,38 @@
 package vox.voxsheetsmanager.controller.sheets;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import vox.voxsheetsmanager.service.sheets.logger.LoggerConfig;
+import vox.voxsheetsmanager.data.mongo.Sheets;
+import vox.voxsheetsmanager.data.sheets.requests.UpdateSheetDataRequest;
+import vox.voxsheetsmanager.service.sheets.ports.SheetsManagerPort;
 
-import java.util.logging.Level;
+import java.util.List;
 
 @RestController
 @RequestMapping("/sheets")
 public class SheetsController {
-
+    @Autowired
+    private SheetsManagerPort sheetsManagerPort;
     @GetMapping("/getSheet/{spreadName}/{sheetName}")
     public ObjectNode getSheet(@PathVariable String spreadName, @PathVariable String sheetName) {
         return null;
     }
 
     @PostMapping("/sendSheetData")
-    public void sendSheetDataToCloud(@RequestBody JsonNode object){
-        System.out.println(object);
-        LoggerConfig.getLogger().log(Level.INFO, object.toString());
+    public void sendSheetDataToCloud(@RequestBody UpdateSheetDataRequest updateSheetDataRequest){
+        sheetsManagerPort.updateSheet(updateSheetDataRequest);
+    }
+
+    @PostMapping("/insertEmptySheet")
+    public void insertEmptySheet(){
+        sheetsManagerPort.insertEmptySheet();
+    }
+
+    @GetMapping("/getAllSheets")
+    public List<Sheets> getAllSheets(){
+        return sheetsManagerPort.getAllSheets();
     }
 
 }

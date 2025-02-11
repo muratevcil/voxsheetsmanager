@@ -15,7 +15,7 @@ public class LoggerConfig {
     private static Logger logger;
 
     public LoggerConfig() throws IOException {
-        this.logger = Logger.getLogger("com.vox");
+        this.logger = Logger.getLogger("vox");
 
         FileHandler fileHandler = new FileHandler("app.log", true);
         fileHandler.setFormatter(new SimpleFormatter());

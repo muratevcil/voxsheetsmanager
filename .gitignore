@@ -1,9 +1,14 @@
-HELP.md
+# Ignore compiled and build artifacts
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-!**/src/main/java/vox/voxsheetsmanager/service/sheets/logger/LoggerConfig.java
+
+# Ignore specific files
+**/src/main/java/vox/voxsheetsmanager/service/sheets/logger/LoggerConfig.java
+**/src/main/resources/application.properties
+
+
 ### STS ###
 .apt_generated
 .classpath
@@ -28,10 +33,13 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+
+# Logs
 app.log
 app.log.1
 app.log.1.lck
 app.log.2
 app.log.lck
+
 ### VS Code ###
 .vscode/
