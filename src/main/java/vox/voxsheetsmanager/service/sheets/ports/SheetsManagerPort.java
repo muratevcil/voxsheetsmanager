@@ -14,7 +14,7 @@ public interface SheetsManagerPort {
 
     List<Sheets> getAllSheets();
 
-    Sheets getSheet(String sheetName,String spreadName);
+    Object getSheet(String sheetName,String spreadName);
 
     void updateSheet(UpdateSheetDataRequest updateSheetDataRequest);
     ObjectNode deleteSheet(String spreadName, String sheetName);

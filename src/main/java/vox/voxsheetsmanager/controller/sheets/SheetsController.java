@@ -16,7 +16,7 @@ public class SheetsController {
     @Autowired
     private SheetsManagerPort sheetsManagerPort;
     @GetMapping("/getSheet/{sheetName}/{spreadName}")
-    public Sheets getSheet(@PathVariable String sheetName, @PathVariable String spreadName) {
+    public Object getSheet(@PathVariable String sheetName, @PathVariable String spreadName) {
         return sheetsManagerPort.getSheet(sheetName,spreadName);
     }
 

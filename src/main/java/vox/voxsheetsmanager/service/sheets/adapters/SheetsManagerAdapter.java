@@ -20,8 +20,8 @@ public class SheetsManagerAdapter implements SheetsManagerPort {
     public MongoSheetsRepository mongoSheetsRepository;
 
     @Override
-    public Sheets getSheet(String sheetName, String spreadName) {
-        return mongoSheetsRepository.findBySheetNameAndSpreadName(sheetName,spreadName);
+    public Object getSheet(String sheetName, String spreadName) {
+        return mongoSheetsRepository.findBySheetNameAndSpreadName(sheetName,spreadName).getSheetContent();
     }
 
     @Override
